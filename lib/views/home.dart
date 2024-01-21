@@ -1,5 +1,4 @@
-import 'package:easycalculator/view_models/home_view_model.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:easy_calculator/view_models/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -7,10 +6,10 @@ class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
   @override
-  _HomeState createState() => _HomeState();
+  HomeState createState() => HomeState();
 }
 
-class _HomeState extends State<Home> {
+class HomeState extends State<Home> {
   HomeViewModel homeViewModel = HomeViewModel();
 
   @override
@@ -30,16 +29,19 @@ class _HomeState extends State<Home> {
             color: Colors.white,
             child: Column(
               children: [
-                Expanded(child: Container(width: width,)),
+                Expanded(
+                    child: Container(
+                  width: width,
+                )),
                 Expanded(
                   child: Container(
                     width: width,
-                    padding:const EdgeInsets.symmetric(horizontal: 16.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
                       calculateValue.join(),
                       maxLines: 1,
                       textAlign: TextAlign.right,
-                      style:const TextStyle(
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 40.0,
                       ),
@@ -49,12 +51,12 @@ class _HomeState extends State<Home> {
                 Expanded(
                   child: Container(
                     width: width,
-                    padding:const EdgeInsets.symmetric(horizontal: 16.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
                       result,
                       maxLines: 1,
                       textAlign: TextAlign.right,
-                      style:const TextStyle(
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 40.0,
                       ),
@@ -75,7 +77,7 @@ class _HomeState extends State<Home> {
                     reverse: true,
                     children: homeViewModel.numberList
                         .map(
-                          (value) => Provider.of<HomeViewModel>(context).pressControl(value,true),
+                          (value) => Provider.of<HomeViewModel>(context).pressControl(value, true),
                         )
                         .toList(),
                   ),
@@ -89,7 +91,7 @@ class _HomeState extends State<Home> {
                         .map(
                           (value) => Column(
                             children: [
-                              Provider.of<HomeViewModel>(context).pressControl(value,false),
+                              Provider.of<HomeViewModel>(context).pressControl(value, false),
                             ],
                           ),
                         )
